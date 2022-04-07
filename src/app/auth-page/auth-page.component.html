@@ -1,0 +1,12 @@
+<div class="spinner_block" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="container">
+    <form class="auth_form" [formGroup]="authForm">
+        <h1>Вход</h1>
+        <input type="text" placeholder="Логин" formControlName="login">
+        <input type="password" placeholder="Пароль" formControlName="password">
+        <button [disabled]="authForm.invalid" [ngStyle]="{'opacity': authForm.invalid ? '.30' : '1'}" (click)="logIn()">Войти</button>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="container" [@navigation]="line ? 'afterNav' : 'beforeNav' ">
+  <div class="navbar_block">
+    <i class="fas fa-times" (click)="navAnime()"></i>
+    <h1 class="navbar_title">Админ</h1>
+
+    <div class="navbar_items">
+      <h2 routerLink="/accounts" routerLinkActive="active">Аккаунты</h2>
+      <h2 routerLink="/tarifs" routerLinkActive="active">Тарифы</h2>
+      <h2 routerLink="/reports" routerLinkActive="active">Отчёты</h2>
+      <h2 routerLink="/transactions" routerLinkActive="active">Транзакции</h2>
+      <h2 routerLink="/services" routerLinkActive="active">Услуги</h2>
+      <h2 routerLink="/users" routerLinkActive="active">Пользователи</h2>
+      <h2 routerLink="/devices" routerLinkActive="active">Девайсы</h2>
+      <h2 routerLink="/firewall" routerLinkActive="active">FireWall</h2>
+    </div>
+  </div>
+
+  <div class="log_Out-block">
+    <div class="colors_block">
+      <h1>{{ themes_name }}</h1>
+      <mat-slide-toggle [color]="color" [checked]="isCheked" (click)="chageThemesName()"></mat-slide-toggle>
+    </div>
+  </div>
+</div>
+
+<div class="navigation_container">
+  <div class="navigation_block" (click)="navAnime()">
+    <div class="stick" [@navigation]="line ? 'after' : 'before' "></div>
+    <div class="stick" [@navigation]="line ? 'nextAfter' : 'nextBefore' "></div>
+    <div class="stick" [@navigation]="line ? 'lastAfter' : 'lastBefore' "></div>
+  </div>
+  <h1 class="log_Out" (click)="logOut()">Выход</h1>
+</div>

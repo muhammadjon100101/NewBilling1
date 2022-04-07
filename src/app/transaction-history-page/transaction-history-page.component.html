@@ -1,0 +1,46 @@
+<div class="spinner_block" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="devide_block">
+  <app-header></app-header>
+
+  <div class="container">
+    <div class="container_content">
+
+      <div class="title_block">
+        <h1>Операция транзакции</h1>
+      </div>
+
+
+      <div class="transaction-fill_content">
+        <h1></h1>
+
+        <table class="resp-tab">
+          <thead>
+            <tr>
+                <th>Лиц.Счёт</th>
+                <th>Оператор</th>
+                <th>Сумма</th>
+                <th>Дата</th>
+                <th>Дата Транзакции</th>
+                <th>ID Транзакции</th>
+                <th>Комментарии</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transactionHistory of transactionHistoryData">
+              <td><span>Лиц.Счёт</span> {{ transactionHistory.account_id }} </td>
+              <td><span>Оператор</span> {{ transactionHistory.operator }} </td>
+              <td><span>Сумма</span> {{ transactionHistory.summ }} </td>
+              <td><span>Дата</span> {{ transactionHistory.date | date: 'dd-MM-yyyy' }} </td>
+              <td><span>Дата Транзакции</span> {{ transactionHistory.txn_date }} </td>
+              <td><span>ID Транзакции</span> {{ transactionHistory.txn_id }} </td>
+              <td><span>Комментарии</span> {{ transactionHistory.comment }} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
