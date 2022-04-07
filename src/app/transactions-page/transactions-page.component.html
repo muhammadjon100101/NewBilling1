@@ -1,0 +1,102 @@
+<div class="spinner_block" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="devide_block">
+  <app-header></app-header>
+
+  <div class="container">
+    <div class="container_content">
+      <div class="title_block">
+        <h1>Транзакции</h1>
+        <!-- <button (click)="addButton()">{{ addText }}</button> -->
+      </div>
+
+      <div class="filter_content">
+        <form class="filter_form">
+          <div class="filter_block" [formGroup]="transactionsFilterForm">
+            <input type="text" placeholder="Лицевой Счёт" formControlName="id">
+            <input type="text" placeholder="Оператор" formControlName="operator">
+            <input type="text" placeholder="Дата Транзакции" formControlName="txn_date">
+            <input type="text" placeholder="ID Транзакции" formControlName="txn_id">
+            <input type="text" placeholder="Комментарии" formControlName="comment">
+            <input type="date" formControlName="start_date">
+            <input type="date" formControlName="end_date">
+            <button (click)="filterTable()">ОК</button>
+          </div>
+
+          <div class="pagination_block">
+            <!-- <button *ngIf="addTable" class="addButton" [disabled]="transactionsForm.invalid" [ngStyle]="{opacity: transactionsForm.invalid ? '.6' : '1'}" (click)="addNewTable()">OK</button> -->
+            <!-- <input type="number" placeholder="0"> -->
+          </div>
+        </form>
+      </div>
+
+      <div class="table_container">
+        <table class="resp-tab">
+          <thead>
+            <tr>
+              <th>Лиц.Счёт</th>
+              <th>Оператор</th>
+              <th>Сумма</th>
+              <th>Дата</th>
+              <th>Дата Транзакции</th>
+              <th>ID Транзакции</th>
+              <th>Комментарии</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="addTable" [formGroup]="transactionsForm">
+              <td></td>
+              <td><input class="addtable" type="text" placeholder="Оператор"  formControlName="operator"></td>
+              <td><input class="addtable" type="number" placeholder="Сумма" formControlName="sum"></td>
+              <td><input class="addtable" type="date" placeholder="Дата" formControlName="date"></td>
+              <td><input class="addtable" type="number" placeholder="Дата Транзакции" formControlName="txn_date"></td>
+              <td><input class="addtable" type="number" placeholder="ID Транзакции" formControlName="txn_id"></td>
+              <td><input class="addtable" type="number" placeholder="Комментарии" formControlName="comment"></td>
+            </tr>
+
+            <tr *ngFor="let transactions of transactionsData">
+              <td><span>ID</span>
+                <h1>{{ transactions.account_id }}</h1>
+              </td>
+
+              <td><span>Оператор</span>
+                <h1>{{ transactions.operator }}</h1>
+              </td>
+
+              <td><span>Сумма</span>
+                <h1>{{ transactions.summ }}</h1>
+              </td>
+
+              <td><span>Дата</span>
+                <h1>{{ transactions.date | date: 'dd-MM-yyyy' }}</h1>
+              </td>
+
+              <td><span>Дата Транзакции</span>
+                <h1>{{ transactions.txn_date }}</h1>
+              </td>
+
+              <td><span>ID Транзакции</span>
+                <h1>{{ transactions.txn_id }}</h1>
+              </td>
+
+              <td><span>Комментарии</span>
+                <h1>{{ transactions.comment }}</h1>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination_block">
+        <pagination-controls nextLabel="Далее" previousLabel="Назад" (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
