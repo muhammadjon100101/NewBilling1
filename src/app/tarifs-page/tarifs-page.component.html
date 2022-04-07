@@ -1,0 +1,132 @@
+<div class="spinner_block" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="addModal_content" *ngIf="addTable">
+  <div class="addModal_block">
+    <i class="fas fa-times" (click)="addTable = false"></i>
+    <form class="addForm" [formGroup]="tarifsAddForm">
+      <input class="addtable" type="text" placeholder="Имя" formControlName="name">
+      <input class="addtable" type="number" placeholder="Цена" formControlName="price">
+      <input class="addtable" type="number" placeholder="Счёт" formControlName="score">
+      <input class="addtable" type="number" placeholder="Скорость" formControlName="speed">
+      <input class="addtable" type="text" placeholder="Комментарий" formControlName="comment">
+      <button class="addButton" [disabled]="tarifsAddForm.invalid" [ngStyle]="{opacity: tarifsAddForm.invalid ? '.6' : '1'}" (click)="addNewTable()">OK</button>
+    </form>
+  </div>
+</div>
+
+<div class="editModal_content" *ngIf="editTable">
+  <div class="editModal_block">
+    <i class="fas fa-times" (click)="editTable = false" ></i>
+    <form class="editForm" [formGroup]="tarifsEditForm">
+      <input class="editTable" type="text" placeholder="Имя" formControlName="name">
+      <input class="editTable" type="number" placeholder="Цена" formControlName="price">
+      <input class="editTable" type="number" placeholder="Счёт" formControlName="score">
+      <input class="editTable" type="number" placeholder="Скорость" formControlName="speed">
+      <input class="editTable" type="text" placeholder="Комментарий" formControlName="comment">
+      <button class="editButton" [disabled]="tarifsEditForm.invalid" [ngStyle]="{opacity: tarifsEditForm.invalid ? '0.6' : '1'}" (click)="editNewTable()">ОК</button>
+    </form>
+  </div>
+</div>
+
+<div class="devide_block">
+  <app-header></app-header>
+  <div class="container">
+    <div class="container_content">
+      <div class="title_block">
+        <h1>Тарифы</h1>
+        <button (click)="addTable = true">Добавить</button>
+      </div>
+
+      <div class="filter_content">
+        <form class="filter_form" [formGroup]="tarifsFilterForm">
+          <div class="filter_block">
+            <input type="text" placeholder="Имя" formControlName="name">
+            <input type="text" placeholder="Цена" formControlName="price">
+            <input type="text" placeholder="Счёт" formControlName="score">
+            <input type="text" placeholder="Скорость" formControlName="speed">
+            <input type="text" placeholder="Комментарий" formControlName="comment">
+            <button (click)="filterTable()">ОК</button>
+          </div>
+
+          <!-- <div class="pagination_block">
+            <input type="number" placeholder="0">
+          </div> -->
+        </form>
+      </div>
+
+      <div class="table_container">
+        <table class="resp-tab">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Имя</th>
+              <th>Цена</th>
+              <th>Счёт</th>
+              <th>Скорость</th>
+              <th>Комментарий</th>
+              <th>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="c1" cx="10" cy="10" r="9.5" stroke="black"/>
+                  <circle class="c2" cx="10" cy="10" r="3" fill="black"/>
+                </svg>  
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tarifs of tarifsData" [formGroup]="tarifsEditForm">
+              <td><span>ID</span>
+                <h1>{{ tarifs.id }}</h1>
+              </td>
+
+              <td><span>Имя</span>
+                <h1>{{ tarifs.name }}</h1>
+              </td>
+
+              <td><span>Цена</span>
+                <h1>{{ tarifs.price }}</h1>
+              </td>
+
+              <td><span>Счёт</span>
+                <h1>{{ tarifs.score }}</h1>
+              </td>
+
+              <td><span>Скорость</span>
+                <h1>{{ tarifs.speed }}</h1>
+              </td>
+
+              <td><span>Комментарий</span>
+                <h1>{{ tarifs.comment }}</h1>
+              </td>
+
+              <td><span>Действия</span>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="openEditTable(tarifs.id)">
+                    <mat-icon>edit</mat-icon>
+                    <span>Изменить</span>
+                  </button>
+
+                  <button mat-menu-item (click)="deleteTable(tarifs.id)">
+                    <mat-icon>delete</mat-icon>
+                    <span>Удалить</span>
+                  </button>
+                </mat-menu>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination_block">
+        <pagination-controls nextLabel="Далее" previousLabel="Назад"  (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>

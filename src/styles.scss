@@ -1,1 +1,190 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
+
+body {
+  --h1-header-text-color: #ffffff;
+  --h1-text-color: #000000;
+  --text-color: #000000;
+  --bkg-color: #F1F0F0;
+  --tbl-color: #E5E5E5;
+  --btn-color: #EA3E2A;
+  --brd-color: #000000;
+  --tbrd-color: #dfdfdd;
+  --cal-inv: invert(0)
+}
+body.dark-theme {
+  --h1-header-text-color: rgb(217, 214, 209);;
+  --h1-text-color: rgb(217, 214, 209);
+  --text-color: #e8e6e3;
+  --bkg-color: #1a1c1d;
+  --tbl-color: #1f2223;
+  --btn-color: rgb(174, 34, 17);
+  --brd-color: rgb(140, 130, 115);
+  --tbrd-color: rgb(57, 62, 64);
+  --cal-inv: invert(1)
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  box-sizing: border-box;
+  background-color: var(--bkg-color);
+  height: 100%;
+
+
+  .addModal_block, .editModal_block, .uslugi_modal-content {
+    background-color: var(--bkg-color) !important;
+
+    .ip_block {
+      border-color: var(--brd-color) !important;
+
+      span {
+        color: var(--text-color) !important;
+      }
+    }
+
+    select {
+      color: var(--text-color) !important;
+    }
+  }
+
+  .navbar_title {
+    color: var(--h1-header-text-color) !important;
+  }
+
+  .log_Out-block {
+    h1 {
+      color: var(--h1-header-text-color) !important;
+    }
+  }
+
+  .container_content span, th, tr, td, .ng-star-inserted {
+    color: var(--text-color) !important;
+  }
+
+  h1 {
+    color: var(--h1-text-color) !important;
+  }
+
+  input {
+    border-color: var(--brd-color) !important;
+    color: var(--brd-color) !important;
+    
+    &::placeholder {
+      color: var(--brd-color) !important;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      filter: var(--cal-inv) !important;
+    }
+  }
+  
+  .addtable {
+    color: var(--text-color) !important;
+  }
+
+  select {
+    border-color: var(--brd-color) !important;
+    color: var(--text-color) !important;
+
+    option {
+      border: var(--brd-color) !important;
+      background-color: var(--bkg-color) !important; 
+    }
+  }
+
+  svg {
+    .c1 {
+      stroke: var(--text-color);
+    }
+    .c2 {
+      fill: var(--text-color);
+    }
+  }
+
+  td {
+    border: 1px solid var(--tbrd-color) !important;
+  }
+  
+  .resp-tab tr:nth-child(even) {
+    background: var(--tbl-color) !important;
+  }
+
+  .title_block, .filter_content {
+    button {
+      background-color: var(--btn-color) !important;
+    }
+  }
+}
+.mat-menu-content  {
+  background-color: var(--tbl-color) !important;
+
+  span {
+    color: var(--text-color);
+  }
+}
+.mat-icon {
+  color: var(--text-color) !important;
+}
+
+.mat-typography h2 {
+  font: 50 20px/20px 'Raleway', sans-serif !important;
+  margin: 0 !important;
+}
+
+.ngx-pagination .current {
+  background-color: #EA3E2A !important;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #212121;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #EA3E2A;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.spinner_block {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(33, 33, 33, 90%);
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+
+  svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 60px !important;
+
+    circle {
+      animation-name: mat-progress-spinner-stroke-rotate-30 !important;
+      stroke-dasharray: 50px !important;
+    }
+  }
+
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: #EA3E2A;
+    stroke-width: 2% !important;
+  }
+}
